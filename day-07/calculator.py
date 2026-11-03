@@ -23,6 +23,38 @@ while True:
     if choice == "0":
         break
     elif choice == "1" or choice == "2" or choice == "3" or choice == "4" or choice == "5" or choice == "6" or choice == "7":
-        print("Valid operation!")
+        
+        first_number = float(input("First number: "))
+        second_number = float(input("Second number: "))
+        
+        if choice == "1":
+            
+            result = (first_number + second_number)
+            print(f"The result: {result} ")
+        if choice == "2":
+                    
+            result = (first_number - second_number)
+            print(f"The result: {result} ")
+        if choice == "3":
+                    
+            result = (first_number * second_number)
+            print(f"The result: {result} ")
+        if choice == "4":
+                    
+            result = (first_number / second_number)
+            print(f"The result: {result} ")
+        if choice == "5":
+                    
+            result = (first_number // second_number)
+            print(f"The result: {result} ")
+        if choice == "6":
+                    
+            result = (first_number % second_number)
+            print(f"The result: {result} ")
+        if choice == "7":
+                    
+            result = (first_number ** second_number)
+            print(f"The result: {result} ")
+
     else:
         print("Invalid operation. Please try again.")
