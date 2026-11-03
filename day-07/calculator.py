@@ -40,21 +40,29 @@ while True:
             result = (first_number * second_number)
             print(f"The result: {result} ")
         if choice == "4":
-                    
-            result = (first_number / second_number)
-            print(f"The result: {result} ")
+            if second_number != 0:
+                result = (first_number / second_number)
+                print(f"The result: {result} ")
+            else:
+                print("Cannot divide by zero. ")
         if choice == "5":
-                    
-            result = (first_number // second_number)
-            print(f"The result: {result} ")
+            if second_number != 0:
+                result = (first_number // second_number)
+                print(f"The result: {result} ")
+            else:
+                print("Cannot divide by zero. ")
         if choice == "6":
-                    
-            result = (first_number % second_number)
-            print(f"The result: {result} ")
+            if second_number != 0:
+                result = (first_number % second_number)
+                print(f"The result: {result} ")
+            else:
+                print("Cannot mod by zero. ")
         if choice == "7":
-                    
-            result = (first_number ** second_number)
-            print(f"The result: {result} ")
+            if first_number != 0 and second_number != (-1):
+                result = (first_number ** second_number)
+                print(f"The result: {result} ")
+            else:
+                print("Invalid operation. Please try again. ")
 
     else:
         print("Invalid operation. Please try again.")
