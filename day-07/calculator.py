@@ -15,10 +15,12 @@ while True:
     print("5 - Floor division ")
     print("6 - Modulo ")
     print("7 - Power ")
+    print("8 - Last Record ")
     print("0 - Exit ")
     print("================================")
 
     choice = input("Choose one of the points above: ")
+    lastRecord = 0
 
     if choice == "0":
         break
@@ -27,42 +29,49 @@ while True:
         first_number = float(input("First number: "))
         second_number = float(input("Second number: "))
         
+        
         if choice == "1":
             
             result = (first_number + second_number)
             print(f"The result: {result} ")
-        if choice == "2":
+        elif choice == "2":
                     
             result = (first_number - second_number)
             print(f"The result: {result} ")
-        if choice == "3":
+        elif choice == "3":
                     
             result = (first_number * second_number)
             print(f"The result: {result} ")
-        if choice == "4":
+        elif choice == "4":
             if second_number != 0:
                 result = (first_number / second_number)
                 print(f"The result: {result} ")
             else:
                 print("Cannot divide by zero. ")
-        if choice == "5":
+        elif choice == "5":
             if second_number != 0:
                 result = (first_number // second_number)
                 print(f"The result: {result} ")
             else:
                 print("Cannot divide by zero. ")
-        if choice == "6":
+        elif choice == "6":
             if second_number != 0:
                 result = (first_number % second_number)
                 print(f"The result: {result} ")
             else:
                 print("Cannot mod by zero. ")
-        if choice == "7":
+        elif choice == "7":
             if first_number != 0 and second_number != (-1):
                 result = (first_number ** second_number)
                 print(f"The result: {result} ")
             else:
                 print("Invalid operation. Please try again. ")
+    elif choice == "8":
+        if lastRecord == 0:
+            print("There was no last record")
+        else:
+            lastRecord = result
+            print(f"The last record was: {lastRecord}")
 
     else:
         print("Invalid operation. Please try again.")
