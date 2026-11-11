@@ -6,6 +6,7 @@ print("================================")
 
 result = 0
 lastRecord = 0
+calculation_count = 0
 
 while True:
     
@@ -27,6 +28,10 @@ while True:
     
 
     if choice == "0":
+        if calculation_count == 0:
+            print("There was no operation")
+        else:
+            print(f"The number of successful operations: {calculation_count}")
         break
     elif choice == "1" or choice == "2" or choice == "3" or choice == "4" or choice == "5" or choice == "6" or choice == "7":
         
@@ -38,43 +43,50 @@ while True:
             
             result = (first_number + second_number)
             print(f"The result: {result} ")
+            calculation_count += 1
             
         elif choice == "2":
                     
             result = (first_number - second_number)
             print(f"The result: {result} ")
-            
+            calculation_count += 1
+    
         elif choice == "3":
                     
             result = (first_number * second_number)
             print(f"The result: {result} ")
-            
+            calculation_count += 1
+
         elif choice == "4":
             if second_number != 0:
                 result = (first_number / second_number)
                 print(f"The result: {result} ")
-                
+                calculation_count += 1
+
             else:
                 print("Cannot divide by zero. ")
         elif choice == "5":
             if second_number != 0:
                 result = (first_number // second_number)
                 print(f"The result: {result} ")
-                
+                calculation_count += 1
+
             else:
                 print("Cannot divide by zero. ")
         elif choice == "6":
             if second_number != 0:
                 result = (first_number % second_number)
                 print(f"The result: {result} ")
-                
+                calculation_count += 1
+
             else:
                 print("Cannot mod by zero. ")
         elif choice == "7":
             if first_number != 0 and second_number != (-1):
                 result = (first_number ** second_number)
                 print(f"The result: {result} ")
-                
+                calculation_count += 1
+
             else:
                 print("Invalid operation. Please try again. ")
     elif choice == "8":
