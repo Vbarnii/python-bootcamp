@@ -4,6 +4,8 @@ print("================================")
 print("      PYTHON CALCULATOR v2")
 print("================================")
 
+result = 0
+lastRecord = 0
 
 while True:
     
@@ -20,7 +22,9 @@ while True:
     print("================================")
 
     choice = input("Choose one of the points above: ")
-    lastRecord = 0
+    
+    
+    
 
     if choice == "0":
         break
@@ -34,43 +38,50 @@ while True:
             
             result = (first_number + second_number)
             print(f"The result: {result} ")
+            
         elif choice == "2":
                     
             result = (first_number - second_number)
             print(f"The result: {result} ")
+            
         elif choice == "3":
                     
             result = (first_number * second_number)
             print(f"The result: {result} ")
+            
         elif choice == "4":
             if second_number != 0:
                 result = (first_number / second_number)
                 print(f"The result: {result} ")
+                
             else:
                 print("Cannot divide by zero. ")
         elif choice == "5":
             if second_number != 0:
                 result = (first_number // second_number)
                 print(f"The result: {result} ")
+                
             else:
                 print("Cannot divide by zero. ")
         elif choice == "6":
             if second_number != 0:
                 result = (first_number % second_number)
                 print(f"The result: {result} ")
+                
             else:
                 print("Cannot mod by zero. ")
         elif choice == "7":
             if first_number != 0 and second_number != (-1):
                 result = (first_number ** second_number)
                 print(f"The result: {result} ")
+                
             else:
                 print("Invalid operation. Please try again. ")
     elif choice == "8":
+        lastRecord = result
         if lastRecord == 0:
             print("There was no last record")
         else:
-            lastRecord = result
             print(f"The last record was: {lastRecord}")
 
     else:
