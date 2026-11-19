@@ -5,9 +5,11 @@ print("      PYTHON CALCULATOR v2")
 print("================================")
 
 result = 0
-lastRecord = 0
+last_record = 0
 calculation_count = 0
-lastResult = ""
+use_last_result = ""
+has_last_result = False
+operation_successful = False
 
 while True:
     
@@ -24,7 +26,7 @@ while True:
     print("================================")
 
     choice = input("Choose one of the points above: ")
-    
+
     
     
 
@@ -35,12 +37,12 @@ while True:
             print(f"The number of successful operations: {calculation_count}")
         break
     elif choice == "1" or choice == "2" or choice == "3" or choice == "4" or choice == "5" or choice == "6" or choice == "7":
-        lastResult = input("Do you want to use the last result as the first number? (Yes/No) ")
-        if lastResult == "Yes" and lastRecord != 0:
-            first_number = lastRecord
-            print(f"The previous result as the first number: {lastRecord}")
+        use_last_result = input("Do you want to use the last result as the first number? (yes/no) ").strip().lower()
+        if use_last_result == "yes" and has_last_result == True:
+            first_number = last_record
+            print(f"The previous result as the first number: {last_record}")
             second_number = float(input("Second number: "))
-        elif lastResult == "No" and lastRecord != 0:
+        elif use_last_result == "no" and has_last_result == False:
             first_number = float(input("First number: "))
             second_number = float(input("Second number: "))
         else:
@@ -50,103 +52,61 @@ while True:
         
         
         if choice == "1":
-            if lastResult == "Yes" and lastRecord != 0:
-                result = (lastRecord + second_number)
-                print(f"The result: {result} ")
-            else:
-                result = (first_number + second_number)
-                print(f"The result: {result} ")
-            calculation_count += 1
+            result = first_number + second_number
+            operation_successful = True
             
         elif choice == "2":
-            if lastResult == "Yes" and lastRecord != 0:
-                result = (lastRecord - second_number)
-                print(f"The result: {result} ")
-            else:
-                result = (first_number - second_number)
-                print(f"The result: {result} ")
-            calculation_count += 1
+            result = first_number - second_number
+            operation_successful = True
     
-        elif choice == "3":
-            if lastResult == "Yes" and lastRecord != 0:
-                result = (lastRecord * second_number)
-                print(f"The result: {result} ")
-            else:        
-                result = (first_number * second_number)
-                print(f"The result: {result} ")
-            calculation_count += 1
+        elif choice == "3":       
+            result = first_number * second_number
+            operation_successful = True
 
         elif choice == "4":
-            if lastResult == "Yes" and lastRecord != 0:
-                if second_number != 0:
-                    result = (lastRecord / second_number)
-                    print(f"The result: {result} ")
-                    calculation_count += 1
-                else:
-                    print("Cannot divide by zero. ")
+            if second_number != 0:
+                result = first_number / second_number
+                operation_successful = True
             else:
-                if second_number != 0:
-                    result = (first_number / second_number)
-                    print(f"The result: {result} ")
-                    calculation_count += 1
-                else:
-                    print("Cannot divide by zero. ")
+                print("Cannot divide by zero. ")
+                operation_successful = False
 
         elif choice == "5":
-            if lastResult == "Yes" and lastRecord != 0:
-                if second_number != 0:
-                    result = (lastRecord // second_number)
-                    print(f"The result: {result} ")
-                    calculation_count += 1
-                else:
-                    print("Cannot divide by zero. ")
+            if second_number != 0:
+                result = first_number // second_number
+                operation_successful = True
             else:
-                if second_number != 0:
-                    result = (first_number // second_number)
-                    print(f"The result: {result} ")
-                    calculation_count += 1
-                else:
-                    print("Cannot divide by zero. ")
+                print("Cannot divide by zero. ")
+                operation_successful = False
 
         elif choice == "6":
-            if lastResult == "Yes" and lastRecord != 0:
-                if second_number != 0:
-                    result = (lastRecord % second_number)
-                    print(f"The result: {result} ")
-                    calculation_count += 1
-                else:
-                    print("Cannot mod by zero. ")
+            if second_number != 0:
+                result = first_number % second_number
+                operation_successful = True
             else:
-                if second_number != 0:
-                    result = (first_number % second_number)
-                    print(f"The result: {result} ")
-                    calculation_count += 1
-                else:
-                    print("Cannot mod by zero. ")
+                print("Cannot mod by zero. ")
+                operation_successful = False
 
         elif choice == "7":
-            if lastResult == "Yes" and lastRecord != 0:
-                if first_number != 0 and second_number != (-1):
-                    result = (lastRecord ** second_number)
-                    print(f"The result: {result} ")
-                    calculation_count += 1
-                else:
-                    print("Invalid operation. Please try again. ")
+            if first_number == 0 and second_number < 0:
+                print("Cannot raise zero to a negative power.")
+                operation_successful = False
             else:
-                if first_number != 0 and second_number != (-1):
-                    result = (first_number ** second_number)
-                    print(f"The result: {result} ")
-                    calculation_count += 1
-                else:
-                    print("Invalid operation. Please try again. ")
+                result = first_number ** second_number
+                operation_successful = True
 
-        lastRecord = result
+        if operation_successful:
+            last_record = result
+            has_last_result = True
+            calculation_count += 1
+            print(f"The result: {result}")
+
     elif choice == "8":
         
-        if lastRecord == 0:
+        if has_last_result == False:
             print("There was no last record")
         else:
-            print(f"The last record was: {lastRecord}")
+            print(f"The last record was: {last_record}")
 
     else:
         print("Invalid operation. Please try again.")
