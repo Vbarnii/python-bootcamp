@@ -4,12 +4,11 @@ print("================================")
 print("      PYTHON CALCULATOR v2")
 print("================================")
 
-result = 0
+
 last_record = 0
 calculation_count = 0
-use_last_result = ""
 has_last_result = False
-operation_successful = False
+
 
 while True:
     
@@ -26,6 +25,9 @@ while True:
     print("================================")
 
     choice = input("Choose one of the points above: ")
+    result = 0
+    use_last_result = ""
+    operation_successful = False
 
     
     
@@ -37,18 +39,19 @@ while True:
             print(f"The number of successful operations: {calculation_count}")
         break
     elif choice == "1" or choice == "2" or choice == "3" or choice == "4" or choice == "5" or choice == "6" or choice == "7":
-        use_last_result = input("Do you want to use the last result as the first number? (yes/no) ").strip().lower()
-        if use_last_result == "yes" and has_last_result == True:
-            first_number = last_record
-            print(f"The previous result as the first number: {last_record}")
-            second_number = float(input("Second number: "))
-        elif use_last_result == "no" and has_last_result == False:
-            first_number = float(input("First number: "))
-            second_number = float(input("Second number: "))
+        if has_last_result:
+            use_last_result = input("Do you want to use the last result as the first number? (yes/no) ").strip().lower()
+            if use_last_result == "yes":
+                first_number = last_record
+            elif use_last_result == "no":
+                first_number = float(input("First number: "))
+            else:
+                print("Invalid answer. Please enter yes or no: ")
+                continue
         else:
-            print("There was no previous operation! Please continue with the following: ")
             first_number = float(input("First number: "))
-            second_number = float(input("Second number: "))
+
+        second_number = float(input("Second number: "))
         
         
         if choice == "1":
@@ -69,7 +72,6 @@ while True:
                 operation_successful = True
             else:
                 print("Cannot divide by zero. ")
-                operation_successful = False
 
         elif choice == "5":
             if second_number != 0:
@@ -77,7 +79,6 @@ while True:
                 operation_successful = True
             else:
                 print("Cannot divide by zero. ")
-                operation_successful = False
 
         elif choice == "6":
             if second_number != 0:
@@ -85,13 +86,11 @@ while True:
                 operation_successful = True
             else:
                 print("Cannot mod by zero. ")
-                operation_successful = False
 
         elif choice == "7":
             if first_number == 0 and second_number < 0:
                 print("Cannot raise zero to a negative power.")
-                operation_successful = False
-            else:
+            else:   
                 result = first_number ** second_number
                 operation_successful = True
 
