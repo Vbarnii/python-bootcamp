@@ -25,8 +25,6 @@ while True:
     print("================================")
 
     choice = input("Choose one of the points above: ")
-    result = 0
-    use_last_result = ""
     operation_successful = False
 
     
